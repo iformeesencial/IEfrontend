@@ -1,87 +1,65 @@
 <?php
-//carga el menu de otro archivo para ahorrar codigo
-require_once('menu.php');
- ?>
-<title>Ingresar</title>
+	include("../config.php");
 
-<h1> Ingrese usuario del sistema </h1>
- <div class="content_area">
-   <div align="center">
-     <div class="left_coloum floatleft">
+	if (isset($_SESSION['access_token'])) {
+		header('Location: http://localhost/index.php');
+		exit();
+	}
 
-<!-- Aca empieza el cosito del login -->
-      <div align="center">
-        <div>
-          <div class="news-letter">
-            <h2>Ingrese usuario</h2>
-            <p>Ingrese sus datos de usuario para poder compartir todas sus noticias!</p>
-            <form action="#" method="post">
-              <input type="text" placeholder="Correo electronico" id="email" />
-              <input type="password" placeholder="Contrasena" id="email" />
-              <input type="submit" value="Ingresar" id="form-submit" />
-            </form>
-            <p class="news-letter-privacy"><a href="index.php">Olvide la contrasena!</p>
-          </div>
+	$redirectURL = "http://localhost/fb-callback.php";
+	$permissions = ['email'];
+	$loginURL = $helper->getLoginUrl($redirectURL, $permissions);
+
+	//die(var_dump($loginURL));
+?>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" crossorigin="anonymous">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+	<!-- Font Awesome CDN -->
+	<script src="https://use.fontawesome.com/025d1f53df.js"></script>
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="./estilo/style.css" type="text/css">
+    <title>Entrar Facebook</title>
+
+</head>
+<body>
+
+	<div class="container" style="margin-top: 100px">
+		<div class="col-md-12" align="center">
+
+        		<img src="img/ie.png" width="200" height="200">
+				<img src="img/face.png"><br><br>
+
+				<form>
+					<input type="button" onclick="window.location = '<?php echo $loginURL ?>';" value="Ingresa con Facebook" class="button">
+					<?php
+
+				die(var_dump($loginURL));
+					 ?>
+        		</form>
+
+        		<br>
+	            <br>
+
+        		<div class="col-md-12">
+	              <a href="#"><img src="./img/add1.png"></a>
+	              <a href="#"><img src="./img/add1.png"></a>
+	              <br>
+	              <br>
+            	</div>
+
+            	<div class="col-md-12" align="center">
+        			<img src="./img/noticias.gif">
+        		</div>
+
         </div>
-<!-- Aca termina -->
 
-<!-- Aca empieza la publicidad -->
-      </div>
+        	</div>
     </div>
-    </div>
-<!-- Aca termina -->
-
-
-<div class="content_area">
-  <div class="">
-    <div class="left_coloum floatleft">
-
-    </div>
-  </div>
-</div>
-
-<!-- Aca empieza las categorias chiquitas del pie de pagina -->
-    <div class="footer_bottom_area" align="center">
-      <div class="footer_menu">
-        <ul id="f_menu">
-          <li><a href="#">Internacionales</a></li>
-          <li><a href="deporte.php">Deportes</a></li>
-          <li><a href="#">Tecnologia</a></li>
-          <li><a href="#">Negocios</a></li>
-          <li><a href="#">Cine</a></li>
-          <li><a href="#">Cultura</a></li>
-          <li><a href="#">blogs</a></li>
-          </ul>
-      </div>
-      <div class="copyright_text">
-        <p>Copyright &copy; 2017 Informe Esencial Todos los derechos reservados | Design by Nachito</a></p>
-        <p>Informe Esencial se reserva estrictamente de que no se hace cargo de nada.</p>
-      </div>
-    </div>
-<!-- Aca termina -->
-
-
-  </div>
-</div>
-<script type="text/javascript" src="assets/js/jquery-min.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery.bxslider.js"></script>
-<script type="text/javascript" src="assets/js/selectnav.min.js"></script>
-<script type="text/javascript">
-selectnav('nav', {
-    label: '-Navigation-',
-    nested: true,
-    indent: '-'
-});
-selectnav('f_menu', {
-    label: '-Navigation-',
-    nested: true,
-    indent: '-'
-});
-$('.bxslider').bxSlider({
-    mode: 'fade',
-    captions: true
-});
-</script>
-</body>
-</html>

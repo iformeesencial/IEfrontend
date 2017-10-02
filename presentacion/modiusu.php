@@ -1,107 +1,96 @@
 <?php
-require_once('menu.php');
+require_once("menu.php");
+
+    //if ((!isset($_SESSION['access_token'])) AND (!isset($_SESSION['loginusu']))) {
+        if (!isset($_SESSION['loginusu'])) {
+
+        ?>
+            <script type="text/javascript">
+              window.alert("No se a logueado aun!");
+              location.href = "../presentacion/login2.php";
+            </script>
+
+        <?php
+
+        exit();
+      }else{
+
  ?>
 
-<title>Perfil</title>
-<h1 align="center">Perfil de usuario -Ignacio Gallardo-</h1>
+<title>Modificar -Usuario-</title>
 
-<!-- Aca empieza las noticias mas destacadas del deporte -->
-  <!-- esto es para el centrado de las columnas -->
-    <div class="content_area">
-      <div class="">
+    <div id="main">
+      <div class="container">
+
         <div class="" align="center">
-  <!-- esto es para el centrado de las columnas -->
+          <div class="col-md-12">
+            <h3></h3>
+            <h3>Modificar Perfil de usuario (nombre usuario)</h3>
+            <p><strong>Informacion general del administrador</strong></p>
 
-  <div>
-    <h2 class="title">Modificar Datos Personales</h2>
+            <font font="Browallia New" size=2>-Edite su informacion-</font>
 
-    <div align="center">
-
-      <h3>Nombre y apellido:</h3>
-      <input type="text" value="Ignacio Gallardo" id="s" />
-      </br></br>
-      </p>
-
-      <h3>Correo Electronico:</h3>
-      <input type="text" value="IG@informeesencial.com" id="s" />
-      </br></br>
-      </p>
-
-      <h3>Telefono:</h3>
-      <input type="text" value="123456" id="s" />
-      </br></br>
-      </p>
-
-      <h3>Tipo de usuario:</h3>
-      <p>No registrado
-      </br></br>
-      <input type="submit" value="Atras" id="form-submit" />
-      <input type="submit" value="Terminar" id="form-submit" />
-      </p>
-
-    </br>
-    </br>
-    </br>
-    </div>
-    <!-- fin de una noticia -->
-
-    <!-- Esto pone el margen  -->
-    <h2 class="title"></h2>
-
-  </div>
-
-        </div>
-      </div>
-
-      <div class="sidebar floatright">
-
-      </div>
-    </div>
+            <br>
+            <br>
 
 
+              <?php
+              if(isset($_SESSION['hola'])){
+                if(!empty($_SESSION['hola'])){
+                    $array = $_SESSION['hola'];
 
-    <!-- Aca empieza las categorias chiquitas del pie de pagina -->
-        <div class="footer_bottom_area" align="center">
-          <div class="footer_menu">
-            <ul id="f_menu">
-              <li><a href="#">Internacionales</a></li>
-              <li><a href="deporte.php">Deportes</a></li>
-              <li><a href="#">Tecnologia</a></li>
-              <li><a href="#">Negocios</a></li>
-              <li><a href="#">Cine</a></li>
-              <li><a href="#">Cultura</a></li>
-              <li><a href="#">blogs</a></li>
-              </ul>
-          </div>
-          <div class="copyright_text">
-            <p>Copyright &copy; 2017 Informe Esencial Todos los derechos reservados | Design by Nachito</a></p>
-            <p>Informe Esencial se reserva estrictamente de que no se hace cargo de nada.</p>
+                ?>
+                  <form action="./form_handler.php?estado=2" method="POST">
+                    <p><strong>Nombre:</strong></p>
+                    <input type="text" name="nombre" value="<?php echo $array[0]['nombre'];?>" class="textbox">
+                    <br>
+                    <br>
+
+                    <p><strong>Apellido:</strong></p>
+                    <input type="text" name="apellido" value="<?php echo $array[0]['apellido'];?>" class="textbox">
+                    <br>
+                    <br>
+
+                    <p><strong>Telefono:</strong></p>
+                    <input type="text" name="telefono" value="<?php echo $array[0]['telefono'];?>" class="textbox">
+                    <br>
+                    <br>
+
+                    <font font="Browallia New" size=2> Suscripcion:</font>
+                            <select name="tipo" class="select">
+                                <option value="Sin suscripcion">Sin suscripcion</option>
+                                <option value="Suscripcion 3 dias">Suscripcion 3 dias</option>
+                                <option value="Suscripcion semanal">Suscripcion semanal</option>
+                                <option value="Suscripcion mensual">Suscripcion mensual</option>
+                            </select>
+
+                    <br>
+                    <br>
+
+
+                    <?php
+
+                      }
+                    }
+                 ?>
+
+                <a href="#"><font font="Browallia New" size=2 color=red>-Reiniciar contraseña-</font></a>
+                <br>
+                <br>
+
+                <input type="submit" name="" value="Terminar modificado" class="button">
+              </form>
+
+            <br>
+            <br>
+
           </div>
         </div>
-    <!-- Aca termina -->
-
 
       </div>
+      <h3></h3>
     </div>
-    <script type="text/javascript" src="assets/js/jquery-min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery.bxslider.js"></script>
-    <script type="text/javascript" src="assets/js/selectnav.min.js"></script>
-    <script type="text/javascript">
-    selectnav('nav', {
-        label: '-Navigation-',
-        nested: true,
-        indent: '-'
-    });
-    selectnav('f_menu', {
-        label: '-Navigation-',
-        nested: true,
-        indent: '-'
-    });
-    $('.bxslider').bxSlider({
-        mode: 'fade',
-        captions: true
-    });
-    </script>
-    </body>
-    </html>
+
+    <?php
+        }
+     ?>

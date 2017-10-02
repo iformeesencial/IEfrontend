@@ -1,45 +1,26 @@
 <?php
+include("../prepend.php");
 
-class edicion{
+class edicion extends conexion{
 
-	private $cantvisita;
+	private $idarticulo;
 	private $fecha;
 
 	function __construct($a,$b)
     {
-			$this->cantvisita=$a;
+			$this->idarticulo=$a;
 			$this->fecha=$b;
 
 		}
 
 		//Metodos GET
-
-	 public function getcantvisita()
-	 {
-		 return $this->cantvisita;
+	 public function getidarticulo(){
+		 return $this->idarticulo;
 	 }
 
-	 public function getfecha()
-	 {
+	 public function getfecha(){
 		 return $this->fecha;
 	 }
 
-
-		//Metodos SET
-		public function setcantvisita($a)
-    {
-      $this->cantvisita=$cantvisita;
-    }
-
-		public function setfecha($b)
-    {
-      $this->fecha=$fecha;
-    }
-
- 		//Funciones de la clase edicion
-		function alta ($conex){
-	   $pu = new Persistenciaadministrador;
-	   return ($pu->agregar($this,$conex));
-	  }
 }
 ?>
