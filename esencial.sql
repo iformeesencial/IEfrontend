@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-09-2017 a las 20:15:33
+-- Tiempo de generación: 16-10-2017 a las 19:38:16
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -50,16 +50,19 @@ CREATE TABLE `articulo` (
   `cantlike_articulo` int(10) DEFAULT NULL,
   `cantcomp_articulo` int(10) DEFAULT NULL,
   `cantvisi_articulo` int(10) DEFAULT NULL,
-  `estado` int(10) DEFAULT NULL
+  `estado` int(10) DEFAULT NULL,
+  `correoadmin` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `articulo`
 --
 
-INSERT INTO `articulo` (`numero`, `seccion`, `fecha_articulo`, `titulo`, `sub_titulo`, `resumen`, `descripcion`, `cantlike_articulo`, `cantcomp_articulo`, `cantvisi_articulo`, `estado`) VALUES
-(1, 'deporte', '27/9/2017', 'Esto es una prueba', 'subtitulo de prueba', 'resumen de prueba', 'descripcion de la prueba', 1, 1, 1, 1),
-(2, 'Politica', '28/9/2017', 'titulo principal', 'subtitulo lindo', 'esto es un resumen del articulo de politica', 'esto es un descripcion del articulo de politica', 20, 10, 13, 1);
+INSERT INTO `articulo` (`numero`, `seccion`, `fecha_articulo`, `titulo`, `sub_titulo`, `resumen`, `descripcion`, `cantlike_articulo`, `cantcomp_articulo`, `cantvisi_articulo`, `estado`, `correoadmin`) VALUES
+(1, 'Deporte', '27/09/2017', 'Esto es una prueba', 'subtitulo de prueba', 'resumen de prueba', 'descripcion de la prueba', 1, 1, 1, 1, 'nachoanime1@hotmail.com'),
+(2, 'Politica', '28/09/2017', 'titulo principal', 'subtitulo lindo', 'esto es un resumen del articulo de politica', 'esto es un descripcion del articulo de politica', 20, 10, 13, 1, 'nachoanime1@hotmail.com'),
+(3, 'Salud', '28/09/2017', 'La salud es muy importante', 'Mejores recetas', 'Resúmenes de las mejores recetas', 'recetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetasrecetas', 1, 1, 1, 1, 'nachoanime1@hotmail.com'),
+(4, 'Deporte', '04/10/2017', 'iijiojiojioj', 'iojiojiopj', 'oijiopjiopj', 'oipjiojiojiojoijiojiopjioiojiojo', 5, 5, 5, 5, 'nachoanime1@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -92,10 +95,14 @@ CREATE TABLE `comenta` (
 --
 
 INSERT INTO `comenta` (`correo_persona`, `numero_coment`, `comentario`, `fecha_coment`) VALUES
+('gustabo@hotmail.com', 1, 'ya tu yabe', '2/10/2017 4'),
 ('nachoanime1@hotmail.com', 1, 'linda publicacion', '28/9/2017 1'),
 ('nachoanime1@hotmail.com', 1, 'comentario lindo 2', '28/9/2017 2'),
+('nachoanime1@hotmail.com', 2, 'comentario publicacion2', '2/10/2017 1 '),
 ('nachoanime2@hotmail.com', 1, 'akljsdklajsdkljasd', '28/9/2017 3'),
-('nachoanime3@hotmail.com', 1, 'gghdfghdfghfghfghgfh', '28/9/2017 4');
+('nachoanime3@hotmail.com', 1, 'gghdfghdfghfghfghgfh', '28/9/2017 4'),
+('nachoanime4@hotmail.com', 2, 'la politica es una caca', '2/10/2017 2'),
+('nachoanime4@hotmail.com', 2, 'mi mama me mima', '2/10/2017 3');
 
 -- --------------------------------------------------------
 
@@ -127,6 +134,15 @@ CREATE TABLE `edicion` (
   `fecha` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `edicion`
+--
+
+INSERT INTO `edicion` (`fecha`) VALUES
+('04/10/2017'),
+('27/09/2017'),
+('28/09/2017');
+
 -- --------------------------------------------------------
 
 --
@@ -157,6 +173,7 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`nombre`, `apellido`, `correo`, `contrasena`) VALUES
+('gustavo', 'hernandez', 'gustabo@hotmail.com', 'b623e24add2f342de2acdf8b4edad496'),
 ('ignacio', 'gallardo', 'nachoanime1@hotmail.com', 'b623e24add2f342de2acdf8b4edad496'),
 ('ignacio', 'gallardo', 'nachoanime2@hotmail.com', 'b623e24add2f342de2acdf8b4edad496'),
 ('ignacio', 'gallardo', 'nachoanime3@hotmail.com', 'b623e24add2f342de2acdf8b4edad496'),
@@ -172,9 +189,19 @@ INSERT INTO `persona` (`nombre`, `apellido`, `correo`, `contrasena`) VALUES
 
 CREATE TABLE `pertenece` (
   `fecha_edicion` varchar(25) NOT NULL,
-  `numero_art` int(10) DEFAULT NULL,
+  `numero_art_pertenece` int(10) NOT NULL,
   `seccion` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `pertenece`
+--
+
+INSERT INTO `pertenece` (`fecha_edicion`, `numero_art_pertenece`, `seccion`) VALUES
+('04/10/2017', 4, 'Deporte'),
+('27/09/2017', 1, 'Deporte'),
+('28/09/2017', 2, 'Politica'),
+('28/09/2017', 3, 'Salud');
 
 -- --------------------------------------------------------
 
@@ -204,6 +231,7 @@ CREATE TABLE `telefono` (
 --
 
 INSERT INTO `telefono` (`correoper`, `telefono`) VALUES
+('gustabo@hotmail.com', 2254564),
 ('nachoanime1@hotmail.com', 23091329),
 ('nachoanime2@hotmail.com', 23091329),
 ('nachoanime3@hotmail.com', 87897897),
@@ -226,10 +254,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`correousu`, `tipo`, `estado`) VALUES
-('nachoanime1@hotmail.com', 'Suscripcion 3 dias', 'Activo'),
+('gustabo@hotmail.com', 'Sin suscripcion', 'Activo'),
+('nachoanime1@hotmail.com', 'Sin suscripcion', 'Activo'),
 ('nachoanime2@hotmail.com', 'Sin suscripcion', 'Activo'),
 ('nachoanime3@hotmail.com', 'Sin suscripcion', 'Activo'),
-('nachoanime400@hotmail.com', 'Suscripcion 3 dias', 'Activo');
+('nachoanime400@hotmail.com', 'Suscripcion 3 dias', 'Activo'),
+('nachoanime4@hotmail.com', 'Sin suscripcion', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -301,7 +331,8 @@ ALTER TABLE `persona`
 -- Indices de la tabla `pertenece`
 --
 ALTER TABLE `pertenece`
-  ADD PRIMARY KEY (`fecha_edicion`);
+  ADD PRIMARY KEY (`fecha_edicion`,`numero_art_pertenece`),
+  ADD KEY `numero_art_pertenece` (`numero_art_pertenece`);
 
 --
 -- Indices de la tabla `sancion_borra_modifi`
@@ -368,7 +399,8 @@ ALTER TABLE `modifica`
 -- Filtros para la tabla `pertenece`
 --
 ALTER TABLE `pertenece`
-  ADD CONSTRAINT `fecha_edicion` FOREIGN KEY (`fecha_edicion`) REFERENCES `edicion` (`fecha`);
+  ADD CONSTRAINT `fecha_edicion` FOREIGN KEY (`fecha_edicion`) REFERENCES `edicion` (`fecha`),
+  ADD CONSTRAINT `numero_art_pertenece` FOREIGN KEY (`numero_art_pertenece`) REFERENCES `articulo` (`numero`);
 
 --
 -- Filtros para la tabla `sancion_borra_modifi`

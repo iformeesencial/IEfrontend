@@ -1,5 +1,4 @@
 <?php
-include("../prepend.php");
 
 class edicion extends conexion{
 

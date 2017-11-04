@@ -1,174 +1,79 @@
 <?php
-require_once("../presentacion/menu.php");
+require_once("$menu");
+
+  if (!isset($_SESSION['seccion'])) {
+
+        ?>
+        <script type="text/javascript">
+          window.alert("Error de carga");
+        </script>
+        <?php
+        exit();
+
+      }else{
+        if(isset($_SESSION['seccion'])){
+              if(!empty($_SESSION['seccion'])){
+                $array = $_SESSION['seccion'];
+                $val = count($array);
  ?>
 
 <title>Categoria</title>
     <div id="main">
       <div class="container">
 
-<!-- Aca arranca el coso de las imagenes que pasan -->
-        <div id="slider-home" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#slider-home" data-slide-to="0" class="active"></li>
-            <li data-target="#slider-home" data-slide-to="1"></li>
-            <li data-target="#slider-home" data-slide-to="2"></li>
-          </ol>
-
-          <div class="carousel-inner" role="listbox">
-
-            <!-- Aca arranca uno -->
-            <div class="carousel-item active">
-              <img src="./img/barca.png" alt="First slide">
-
-              <div class="carousel-caption">
-
-                <h2>Noticias al dia</h2>
-                <img alt="Categoria de noticia" src="">
-                <p class="h4">Cosas que pasan</p>
-                <p>Vea esta noticia ahora.</p>
-                <a href="#" class="btn btn-secondary">Ver noticia</a>
-              </div>
-            </div>
-            <!-- Aca arranca termina -->
-
-            <div class="carousel-item">
-              <img src="./img/estadio.png" alt="Second slide">
-
-              <div class="carousel-caption">
-
-                <h2>Noticias al dia</h2>
-                <img alt="Categoria de noticia" src="">
-                <p class="h4">Cosas que pasan</p>
-                <p>Vea esta noticia ahora.</p>
-                <a href="#" class="btn btn-secondary">Ver noticia</a>
-
-              </div>
-
-            </div>
-
-            <div class="carousel-item">
-              <img src="./img/uruguay.png" alt="Third slide">
-
-              <div class="carousel-caption">
-                <h2>Noticias al dia</h2>
-                <img alt="Categoria de noticia" src="">
-                <p class="h4">Cosas que pasan</p>
-                <p>Vea esta noticia ahora.</p>
-                <a href="#" class="btn btn-secondary">Ver noticia</a>
-
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-
 <!-- Aca termina el coso de las imagenes que pasan -->
 
         <div class="row mar-top-80">
-          <div class="col-md-3">
-            <a href="articulo.php"><h3>Noticia por categoria1</h3></a>
-            <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
 
-            <font font="Browallia New" size=2> By: Ignacio Gallardo</font>
+          <div class="col-md-12">
+            <h3 align="center"></h3>
+            <?php
+              for ($i = 0; $i < 1; $i ++){ //Toma el nombre de catergoria para mostrarlo en el titulo
+            ?>
 
-            <br>
+            <h3 align="center">Resultado de Busqueda</h3>
 
-            <font font="Browallia New" size=2 color=red> Megusta (2)</font>
-            <font font="Adobe Arabic" size=2 color=red> Compartir (3) </font>
-            <font font="Adobe Arabic" size=2 color=red> Comentarios (3) </font>
+            <?php
+              }
+            ?>
           </div>
 
-            <div class="col-md-3">
-              <a href="#"><h3>Noticia por categoria2</h3></a>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
+        <!-- Publicidad de las chiquitas -->
+          <div class="col-md-3">
+            <h3><strong>Publicidad1</strong></h3>
+            <a href="#"><img src="<?php echo $img;?>add1.png"></a>
+          </div>
 
-              <font font="Browallia New" size=2> By: Ignacio Gallardo</font>
-
+            <?php
+                for ($i = 0; $i < $val; $i ++){
+            ?>
+          <div class="col-md-7">
+              <h3></h3>
+              <a href="<?php echo $handler;?>?estado=5&num=<?php echo $array[$i]['numero'];?>"><h3><?php echo $array[$i]['titulo'];?></h3></a>
+              <p><?php echo $array[$i]['resumen'];?></p>
+              <font font="Browallia New" size=2> By: <?php echo $array[$i]['correoadmin'];?></font>
               <br>
 
               <font font="Browallia New" size=2 color=red> Megusta (2)</font>
               <font font="Adobe Arabic" size=2 color=red> Compartir (3) </font>
               <font font="Adobe Arabic" size=2 color=red> Comentarios (3) </font>
-            </div>
+            <!-- </form> -->
+          </div>
 
-            <div class="col-md-3">
-              <a href="#"><h3>Noticia por categoria3</h3></a>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
-
-              <font font="Browallia New" size=2> By: Ignacio Gallardo</font>
-
-              <br>
-
-              <font font="Browallia New" size=2 color=red> Megusta (2)</font>
-              <font font="Adobe Arabic" size=2 color=red> Compartir (3) </font>
-              <font font="Adobe Arabic" size=2 color=red> Comentarios (3) </font>
-            </div>
-
-<!-- Publicidad de las chiquitas -->
-            <div class="col-md-3">
-              <h3><strong>Publicidad1</strong></h3>
-              <a href="#"><img src="./img/add1.png"></a>
-            </div>
-
+          <?php
+                  }
+                }
+              }
+              ?>
 <!-- Publicidad de las largas -->
           <div class="col-md-12" align="center">
             <p></p>
-            <a href="#"><img src="./img/noticias.gif" align="center"></a>
+            <a href="#"><img src="<?php echo $img;?>noticias.gif" align="center"></a>
           </div>
         </div>
 
         <div class="row mar-top-80">
-          <div class="col-md-3">
-            <h3>Noticia por categoria4</h3>
-            <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
-
-            <font font="Browallia New" size=2> By: Ignacio Gallardo</font>
-
-            <br>
-
-            <font font="Browallia New" size=2 color=red> Megusta (2)</font>
-            <font font="Adobe Arabic" size=2 color=red> Compartir (3) </font>
-            <font font="Adobe Arabic" size=2 color=red> Comentarios (3) </font>
-          </div>
-
-            <div class="col-md-3">
-              <h3>Noticia por categoria5</h3>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
-
-              <font font="Browallia New" size=2> By: Ignacio Gallardo</font>
-
-              <br>
-
-              <font font="Browallia New" size=2 color=red> Megusta (2)</font>
-              <font font="Adobe Arabic" size=2 color=red> Compartir (3) </font>
-              <font font="Adobe Arabic" size=2 color=red> Comentarios (3) </font>
-            </div>
-
-            <div class="col-md-3">
-              <h3>Noticia por categoria6</h3>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
-
-              <font font="Browallia New" size=2> By: Ignacio Gallardo</font>
-
-              <br>
-
-              <font font="Browallia New" size=2 color=red> Megusta (2)</font>
-              <font font="Adobe Arabic" size=2 color=red> Compartir (3) </font>
-              <font font="Adobe Arabic" size=2 color=red> Comentarios (3) </font>
-            </div>
-
-<!-- Publicidad de las chiquitas -->
-            <div class="col-md-3">
-              <h3><strong>Publicidad2</strong></h3>
-              <img src="./img/add2.png">
-
-              <br>
-              <br>
-
-              <a href="#"><img src="./img/add1.png"></a>
-            </div>
-        </div>
+      </div>
 
 
         <div class="row mar-top-80" align="center">
@@ -179,27 +84,27 @@ require_once("../presentacion/menu.php");
             <div class="row" align="center">
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery01.jpg" alt="Imagen 1" class="img-fluid">
+                <img src="<?php echo $img;?>gallery01.jpg" alt="Imagen 1" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery02.jpg" alt="Imagen 2" class="img-fluid">
+                <img src="<?php echo $img;?>gallery02.jpg" alt="Imagen 2" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
@@ -212,14 +117,14 @@ require_once("../presentacion/menu.php");
           <!-- Publicidad de las largas -->
                     <div class="col-md-12">
                       <p></p>
-                      <img src="./img/noticias.gif" align="center">
+                      <img src="<?php echo $img;?>  noticias.gif" align="center">
                     </div>
 
         </div>
 
 
         <?php
-        require_once("pie2.php");
+        require_once("$pie2");
         ?>
 
       </div>
@@ -227,5 +132,6 @@ require_once("../presentacion/menu.php");
     </div>
 
     <?php
-require_once("pie.php");
+    }
+    require_once("$pie");
  ?>

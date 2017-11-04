@@ -1,5 +1,5 @@
 <?php
-require_once("../presentacion/menu.php");
+require_once("$menu");
  ?>
 
 <title>Registro nuevo</title>
@@ -18,7 +18,7 @@ require_once("../presentacion/menu.php");
             <br>
             <br>
 
-            <form action="./form_handler.php?estado=3" method="POST">
+            <form action="<?php echo $handler;?>?estado=3" method="POST">
 
             <p>Nombre:</p>
             <input type="text" name="nombre" id="nombre" class="textbox" required="required">
@@ -40,8 +40,9 @@ require_once("../presentacion/menu.php");
             <br>
             <br>
             <input type="text" name="tel2" id="tel2" class="textbox" style="display:none">
-          
-            <button type="submit" name="boton" id="boton" onclick="Mostrar_ocultar();" class="button">Agregar</button>
+
+            <br>
+            <button type="submit" name="boton" onclick=Mostrar_ocultar(); class="button">Agregar</button>
 
             <br>
             <br>
@@ -53,7 +54,7 @@ require_once("../presentacion/menu.php");
                         <option value="Suscripcion semanal">Suscripcion semanal</option>
                         <option value="Suscripcion mensual">Suscripcion mensual</option>
               </select>
-
+          
             <br>
             <br>
 
@@ -67,13 +68,13 @@ require_once("../presentacion/menu.php");
             <br>
             <br>
 
-            <input type="submit" name="" value="Crear usuario" class="button">
+            <input type="submit" value="Crear usuario" class="button">
             </form>
 
             <br>
             <br>
 
-            <a href="../presentacion/login.php"><font font="Browallia New" size=2 color=red>¿Ya estas registrado? ¡Ingresa ahora!</font></a>
+            <a href="<?php echo $login2;?>"><font font="Browallia New" size=2 color=red>¿Ya estas registrado? ¡Ingresa ahora!</font></a>
 
           </div>
 
@@ -81,14 +82,14 @@ require_once("../presentacion/menu.php");
             <div class="col-md-3">
               <h3></h3>
               <h3><strong>Publicidad1</strong></h3>
-              <a href="#"><img src="./img/add1.png"></a>
+              <a href="#"><img src="<?php echo $img;?>add1.png"></a>
 
               <br>
               <br>
 
               <h3></h3>
               <h3><strong>Publicidad2</strong></h3>
-              <a href="#"><img src="./img/add1.png"></a>
+              <a href="#"><img src="<?php echo $img;?>add1.png"></a>
             </div>
 
         </div>
@@ -97,11 +98,11 @@ require_once("../presentacion/menu.php");
           <!-- Publicidad de las largas -->
                     <div class="col-md-12">
                       <p></p>
-                      <img src="./img/noticias.gif" align="center">
+                      <img src="<?php echo $img;?>noticias.gif" align="center">
                     </div>
 
         </div>
-        
+
         <?php
         require_once("pie2.php");
         ?>

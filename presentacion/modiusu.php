@@ -1,13 +1,12 @@
 <?php
-require_once("menu.php");
+require_once("$menu");
 
-    //if ((!isset($_SESSION['access_token'])) AND (!isset($_SESSION['loginusu']))) {
-        if (!isset($_SESSION['loginusu'])) {
+    if ((!isset($_SESSION['access_token'])) AND (!isset($_SESSION['loginusu']))) {
 
         ?>
             <script type="text/javascript">
               window.alert("No se a logueado aun!");
-              location.href = "../presentacion/login2.php";
+              location.href = "<?php echo $login2; ?>";
             </script>
 
         <?php
@@ -22,7 +21,7 @@ require_once("menu.php");
     <div id="main">
       <div class="container">
 
-        <div class="" align="center">
+        <div align="center">
           <div class="col-md-12">
             <h3></h3>
             <h3>Modificar Perfil de usuario (nombre usuario)</h3>
@@ -35,12 +34,12 @@ require_once("menu.php");
 
 
               <?php
-              if(isset($_SESSION['hola'])){
-                if(!empty($_SESSION['hola'])){
-                    $array = $_SESSION['hola'];
+              if(isset($_SESSION['modi'])){
+                if(!empty($_SESSION['modi'])){
+                    $array = $_SESSION['modi'];
 
                 ?>
-                  <form action="./form_handler.php?estado=2" method="POST">
+                  <form action="<?php echo $handler;?>?estado=2" method="POST">
                     <p><strong>Nombre:</strong></p>
                     <input type="text" name="nombre" value="<?php echo $array[0]['nombre'];?>" class="textbox">
                     <br>
@@ -78,7 +77,7 @@ require_once("menu.php");
                 <br>
                 <br>
 
-                <input type="submit" name="" value="Terminar modificado" class="button">
+                <input type="submit" value="Terminar modificado" class="button">
               </form>
 
             <br>

@@ -1,5 +1,5 @@
 <?php
-require_once("../presentacion/menu.php");
+require_once("$menu");
  ?>
 
 <title>Ingreso</title>
@@ -13,7 +13,7 @@ require_once("../presentacion/menu.php");
           <!-- Publicidad de las largas -->
                     <div class="col-md-12">
                       <p></p>
-                      <img src="./img/noticias.gif" align="center">
+                      <img src="<?php echo $img;?>noticias.gif" align="center">
                     </div>
           </div>
 
@@ -27,7 +27,7 @@ require_once("../presentacion/menu.php");
             <br>
             <br>
 
-            <form action="./form_handler.php?estado=0" method="POST">
+            <form action="<?php echo $handler;?>?estado=0" method="POST">
             <p>Correo de usuario:</p>
             <input type="email" name="correo" id="correo" class="textbox" required="required">
             <br>
@@ -41,14 +41,14 @@ require_once("../presentacion/menu.php");
 
             <br>
 
-            <input type="submit" name="" value="Ingresar" class="button">
+            <input type="submit" value="Ingresar" class="button">
 
             </form>
 
             <br>
             <br>
 
-            <a href="http://localhost/registro.php"><font font="Browallia New" size=2 color=red>¿No estas registrado? ¡Registrate ahora!</font></a>
+            <a href="<?php echo $reg;?>"><font font="Browallia New" size=2 color=red>¿No estas registrado? ¡Registrate ahora!</font></a>
 
             <br>
             <br>
@@ -57,7 +57,7 @@ require_once("../presentacion/menu.php");
 
             <font font="Arial" size=8>Entrar con Facebook</font>
             <br>
-            <a href="http://localhost/login.php"><img src="./img/face.png"></a>
+            <a href="<?php echo $login;?>"><img src="<?php echo $img;?>face.png"></a>
 
 
           </div>
@@ -66,13 +66,13 @@ require_once("../presentacion/menu.php");
             <div class="col-md-3">
               <h3></h3>
               <h3><strong>Publicidad1</strong></h3>
-              <a href="#"><img src="./img/add1.png"></a>
+              <a href="#"><img src="<?php echo $img;?>add1.png"></a>
 
               <br>
 
               <h3></h3>
               <h3><strong>Publicidad2</strong></h3>
-              <a href="#"><img src="./img/add1.png"></a>
+              <a href="#"><img src="<?php echo $img;?>add1.png"></a>
             </div>
 
         </div>
@@ -81,53 +81,14 @@ require_once("../presentacion/menu.php");
           <!-- Publicidad de las largas -->
                     <div class="col-md-12">
                       <p></p>
-                      <img src="./img/noticias.gif" align="center">
+                      <img src="<?php echo $img;?>noticias.gif" align="center">
                     </div>
 
         </div>
+        <?php
+        require_once("$pie2");
+        ?>
 
-
-        <div class="sidebars-zone row mar-top-80">
-          <div class="col-sm-4">
-            <h4>Los mas destacados</h4>
-            <p>Super noticia .</p>
-            <p>Super noticia .</p>
-            <p>Super noticia .</p>
-          </div>
-          <div class="col-sm-4">
-            <h4>Noticias mas destacadas</h4>
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">Bla Bla</a>
-              </li>
-              <li>
-                <a href="#">Bla Bla</a>
-              </li>
-              <li>
-                <a href="#">Bla Bla</a>
-              </li>
-              <li>
-                <a href="#">Bla Bla</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-sm-4">
-            <h4>Síguenos en las redes sociales</h4>
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">Facebook</a>
-              </li>
-              <li>
-                <a href="#">Twitter</a>
-              </li>
-              <li>
-                <a href="#">Youtube</a>
-              </li>
-              <li>
-                <a href="#">Instagram</a>
-              </li>
-            </ul>
-          </div>
         </div>
 
       </div>
@@ -135,5 +96,5 @@ require_once("../presentacion/menu.php");
     </div>
 
     <?php
-      require_once("pie.php");
+      require_once("$pie");
     ?>

@@ -1,17 +1,21 @@
 <?php
-require_once("./menu.php");
+require_once("$menu");
 
     if (!isset($_SESSION['port'])) {
 
         ?>
         <script type="text/javascript">
-          location.href = "http://localhost/form_handler.php?estado=6";
+          location.href = "<?php echo $handler;?>?estado=6";
         </script>
         <?php
-
         exit();
-      }else{
-?>
+
+        }else{
+          if(isset($_SESSION['port'])){
+                if(!empty($_SESSION['port'])){
+                  $array = $_SESSION['port'];
+                  $val = count($array);
+        ?>
 
 <title>Portada -Informe Esencial-</title>
     <div id="main">
@@ -29,7 +33,7 @@ require_once("./menu.php");
 
             <!-- Aca arranca uno -->
             <div class="carousel-item active">
-              <img src="./img/barca.png" alt="First slide">
+              <img src="<?php echo $img;?>barca.png" alt="First slide">
 
               <div class="carousel-caption">
 
@@ -43,7 +47,7 @@ require_once("./menu.php");
             <!-- Aca arranca termina -->
 
             <div class="carousel-item">
-              <img src="./img/estadio.png" alt="Second slide">
+              <img src="<?php echo $img;?>estadio.png" alt="Second slide">
 
               <div class="carousel-caption">
 
@@ -58,7 +62,7 @@ require_once("./menu.php");
             </div>
 
             <div class="carousel-item">
-              <img src="./img/uruguay.png" alt="Third slide">
+              <img src="<?php echo $img;?>uruguay.png" alt="Third slide">
 
               <div class="carousel-caption">
                 <h2>Noticias al dia</h2>
@@ -77,38 +81,23 @@ require_once("./menu.php");
 <!-- Aca termina el coso de las imagenes que pasan -->
 
         <div class="row mar-top-80">
-        <?php
-              if(isset($_SESSION['port'])){
-              if(!empty($_SESSION['port'])){
-                $array = $_SESSION['port'];
-                $val = count($array);
-
+            <?php
                 for ($i = 0; $i < $val; $i ++){
-
-
             ?>
           <div class="col-md-3">
 
-            <a href="./form_handler.php?estado=5">
-            <h3><?php echo $array[$i]['titulo'];?></h3></a>
+            <a href="<?php echo $handler;?>?estado=5&num=<?php echo $array[$i]['numero'];?>"><h3><?php echo $array[$i]['titulo'];?></h3></a>
             <p><?php echo $array[$i]['sub_titulo'];?>.</p>
-
-            <font font="Browallia New" size=2> By: Ignacio Gallardo</font>
-            <?php
-
-            $_SESSION['numart'] = $array[$i]['numero'];
-            echo $array[$i]['numero'];
-
-            ?>
-
+            <font font="Browallia New" size=2> By: <?php echo $array[$i]['correoadmin'];?></font>
             <br>
-            <!-- Me gusta a una pagina -->
-            <div class="fb-like" data-href="https://www.facebook.com/Informe-Esencial-1911389689184461/" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
-            <!-- Compartir una pagina -->
-            <div class="fb-share-button" data-href="https://informeesencial.wordpress.com/" data-layout="button_count" data-size="small" data-mobile-iframe="true">
-                <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FInforme-Esencial-1911389689184461%2F&amp;src=sdkpreparse">Compartir</a>
-            </div>
+            <!-- <a href="<?php echo $login2;?>"><font color=red>Megusta</a></font> -->
 
+            <!-- Me gusta a una pagina -->
+            <!-- <div class="fb-like" data-href="https://www.facebook.com/Informe-Esencial-1911389689184461/" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div> -->
+            <!-- Compartir una pagina -->
+            <!-- <div class="fb-share-button" data-href="https://informeesencial.wordpress.com/" data-layout="button_count" data-size="small" data-mobile-iframe="true">
+                <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FInforme-Esencial-1911389689184461%2F&amp;src=sdkpreparse">Compartir</a>
+            </div> -->
             </div>
 
               <?php
@@ -119,7 +108,7 @@ require_once("./menu.php");
 
             <div class="col-md-3">
               <a href="#"><h3>Noticia destacada 3 </h3></a>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
+              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Estoes una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
 
               <font font="Browallia New" size=2> By: Ignacio Gallardo</font>
 
@@ -142,7 +131,7 @@ require_once("./menu.php");
 <!-- Publicidad de las largas -->
           <div class="col-md-12" align="center">
             <p></p>
-            <a href="#"><img src="./img/noticias.gif" align="center"></a>
+            <a href="#"><img src="<?php echo $img;?>noticias.gif" align="center"></a>
           </div>
         </div>
 
@@ -187,18 +176,18 @@ require_once("./menu.php");
 <!-- Publicidad de las chiquitas -->
             <div class="col-md-3">
               <h3><strong>Publicidad2</strong></h3>
-              <img src="./img/add2.png">
+              <img src="<?php echo $img;?>add2.png">
 
               <br>
               <br>
 
-              <a href="#"><img src="./img/add1.png"></a>
+              <a href="#"><img src="<?php echo $img;?>add1.png"></a>
             </div>
 
             <!-- Publicidad intermedia -->
             <div class="col-md-12" align="center">
                 <p></p>
-                <img src="./img/noticias.gif" align="center">
+                <img src="<?php echo $img;?>noticias.gif" align="center">
             </div>
 
         </div>
@@ -210,41 +199,31 @@ require_once("./menu.php");
             <h3 align="center"></h3>
             <h3 align="center">Noticias por categoria</h3>
 
-            <div class="col-sm-2">
-              <h3></h3>
-              <h3>Otros</h3>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
-            </div>
+              <?php
 
-            <div class="col-sm-2">
-              <h3></h3>
-              <h3>Otros</h3>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
-            </div>
+                if(isset($_SESSION['todo'])){
+                    if(!empty($_SESSION['todo'])){
+                      $array = $_SESSION['todo'];
+                      $val = count($array);
+                      for ($i = 0; $i < $val; $i ++){
+              ?>
+            <form action="<?php echo $handler;?>?estado=5" method="POST">
+              <div class="col-sm-2">
+                <h3></h3>
+                <h3><?php echo $array[$i]['titulo'];?></h3>
+                <p><?php echo $array[$i]['resumen'];?></p>
 
-            <div class="col-sm-2">
-              <h3></h3>
-              <h3>Otros</h3>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
-            </div>
+                <input type="text" style="visibility:hidden" name="num" value='<?php echo $array[$i]['numero'];?>'>
+                <input type="submit" name="" value="Ver" class="button">
+              </div>
 
-            <div class="col-sm-2">
-              <h3></h3>
-              <h3>Otros</h3>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
-            </div>
+            </form>
+            <?php
+                }
+              }
+            }
+            ?>
 
-            <div class="col-sm-2">
-              <h3></h3>
-              <h3>Otros</h3>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
-            </div>
-
-            <div class="col-sm-2">
-              <h3></h3>
-              <h3>Otros</h3>
-              <p>Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.Esto es una noticia.</p>
-            </div>
 
           </div>
         </div>
@@ -258,62 +237,62 @@ require_once("./menu.php");
             <div class="row" align="center">
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery01.jpg" alt="Imagen 1" class="img-fluid">
+                <img src="<?php echo $img;?>gallery01.jpg" alt="Imagen 1" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery02.jpg" alt="Imagen 2" class="img-fluid">
+                <img src="<?php echo $img;?>gallery02.jpg" alt="Imagen 2" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
               <div class="col-sm-2">
                 <p>Noticia</p>
-                <img src="./img/gallery03.jpg" alt="Imagen 3" class="img-fluid">
+                <img src="<?php echo $img;?>gallery03.jpg" alt="Imagen 3" class="img-fluid">
                 <p>Bla Bla Bla</p>
               </div>
             </div>
@@ -322,7 +301,7 @@ require_once("./menu.php");
           <!-- Publicidad de las largas -->
             <div class="col-md-12">
                 <p></p>
-                <img src="./img/noticias.gif" align="center">
+                <img src="<?php echo $img;?>noticias.gif" align="center">
             </div>
         </div>
 

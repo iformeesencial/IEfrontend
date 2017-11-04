@@ -1,5 +1,5 @@
 <?php
-  require_once("../presentacion/menu.php");
+  require_once("$menu");
  ?>
 
 <title>Contactos</title>
@@ -14,11 +14,11 @@
             <p><strong>Formulario de usuario</strong></p>
 
             <font font="Browallia New" size=2>Ingrese la informacion solicitada para poder enviarnos su correo</font>
-              
+
               <br>
               <br>
 
-            <form action="../logica/procesarcontacto.php" method="POST">
+            <form action="<?php echo $handler;?>?estado=10" method="POST">
 
               <p>Correo de usuario:</p>
               <input type="email" name="correo" id="correo" class="textbox" required="required">
@@ -35,7 +35,7 @@
 
               <p>Asunto del correo:</p>
               <input type="text" name="asunto" id="asunto" class="textbox" required="required" placeholder="Asunto">
-              
+
               <br>
               <br>
               <p>Redacte su correo:</p>
@@ -43,7 +43,7 @@
               <br>
               <font font="Browallia New" size=2 color="red">Maximo 300 caracteres</font>
               <br>
-              <input type="Submit" name="" value="Enviar mensaje" class="button">
+              <input type="Submit" value="Enviar mensaje" class="button">
 
             </form>
 
@@ -53,13 +53,13 @@
             <div class="col-md-3">
               <h3></h3>
               <h3><strong>Publicidad1</strong></h3>
-              <a href="#"><img src="../presentacion/img/add1.png"></a>
+              <a href="#"><img src="<?php echo $img;?>add1.png"></a>
 
               <br>
 
               <h3></h3>
               <h3><strong>Publicidad2</strong></h3>
-              <a href="#"><img src="../presentacion/img/add1.png"></a>
+              <a href="#"><img src="<?php echo $img;?>add1.png"></a>
             </div>
 
         </div>
@@ -68,62 +68,20 @@
           <!-- Publicidad de las largas -->
                     <div class="col-md-12">
                       <p></p>
-                      <img src="../presentacion/img/noticias.gif" align="center">
+                      <img src="<?php echo $img;?>noticias.gif" align="center">
                     </div>
 
         </div>
 
 
-        <div class="sidebars-zone row mar-top-80">
-          <div class="col-sm-4">
-            <h4>Los mas destacados</h4>
-            <p>Super noticia .</p>
-            <p>Super noticia .</p>
-            <p>Super noticia .</p>
-          </div>
-          <div class="col-sm-4">
-            <h4>Noticias mas destacadas</h4>
-
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">Bla Bla</a>
-              </li>
-              <li>
-                <a href="#">Bla Bla</a>
-              </li>
-              <li>
-                <a href="#">Bla Bla</a>
-              </li>
-              <li>
-                <a href="#">Bla Bla</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-sm-4">
-            <h4>Síguenos en las redes sociales</h4>
-
-            <ul class="list-unstyled">
-              <li>
-                <a href="#">Facebook</a>
-              </li>
-              <li>
-                <a href="#">Twitter</a>
-              </li>
-              <li>
-                <a href="#">Youtube</a>
-              </li>
-              <li>
-                <a href="#">Instagram</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <?php
+          require_once("pie2.php");
+        ?>
 
       </div>
 
     </div>
 
     <?php
-      require_once("../presentacion/pie.php");
+      require_once("pie.php");
     ?>

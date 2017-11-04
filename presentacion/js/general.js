@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
 	  pause: "hover"
 	})
 });
-	
+
 	function Mostrar(){
 		document.getElementById("tel2").style.display = "block";
 	}
