@@ -29,11 +29,23 @@ require_once("$menu");
             <h3 align="center"></h3>
             <?php
               for ($i = 0; $i < 1; $i ++){ //Toma el nombre de catergoria para mostrarlo en el titulo
+                if (!empty($array[0]['nombrecat'])) {
+                                  
             ?>
 
-            <h3 align="center">Resultado de Busqueda</h3>
+            <h3 align="center">Resultado de categoria <?php echo $array[0]['nombrecat'];?></h3>
 
             <?php
+              }else{
+
+                ?>
+
+                <h3 align="center">Resultado de Busqueda:</h3>
+
+                <?php
+
+              }
+
               }
             ?>
           </div>
@@ -51,12 +63,15 @@ require_once("$menu");
               <h3></h3>
               <a href="<?php echo $handler;?>?estado=5&num=<?php echo $array[$i]['numero'];?>"><h3><?php echo $array[$i]['titulo'];?></h3></a>
               <p><?php echo $array[$i]['resumen'];?></p>
-              <font font="Browallia New" size=2> By: <?php echo $array[$i]['correoadmin'];?></font>
+              <font font="Browallia New" size=2> Autor: <?php echo $array[$i]['correoadmin'];?></font>
+              <br>
+              <font font="Browallia New" size=2> Publicado: <?php echo $array[$i]['fecha_crea'];?></font>
+              
               <br>
 
-              <font font="Browallia New" size=2 color=red> Megusta (2)</font>
-              <font font="Adobe Arabic" size=2 color=red> Compartir (3) </font>
-              <font font="Adobe Arabic" size=2 color=red> Comentarios (3) </font>
+              <font font="Browallia New" size=2 color=red> Megusta: <?php echo $array[$i]['cantlike_articulo'];?></font>
+              <font font="Adobe Arabic" size=2 color=red> Compartir: <?php echo $array[$i]['cantcomp_articulo'];?></font>
+              <font font="Adobe Arabic" size=2 color=red> Comentarios (<?php echo $val;?>) </font>
             <!-- </form> -->
           </div>
 

@@ -88,7 +88,7 @@ require_once("$menu");
 
             <a href="<?php echo $handler;?>?estado=5&num=<?php echo $array[$i]['numero'];?>"><h3><?php echo $array[$i]['titulo'];?></h3></a>
             <p><?php echo $array[$i]['sub_titulo'];?>.</p>
-            <font font="Browallia New" size=2> By: <?php echo $array[$i]['correoadmin'];?></font>
+            <font font="Browallia New" size=2> Autor: <?php echo $array[$i]['correoadmin'];?></font>
             <br>
             <!-- <a href="<?php echo $login2;?>"><font color=red>Megusta</a></font> -->
 
@@ -207,17 +207,14 @@ require_once("$menu");
                       $val = count($array);
                       for ($i = 0; $i < $val; $i ++){
               ?>
-            <form action="<?php echo $handler;?>?estado=5" method="POST">
               <div class="col-sm-2">
                 <h3></h3>
-                <h3><?php echo $array[$i]['titulo'];?></h3>
+                <a href="<?php echo $handler;?>?estado=5&num=<?php echo $array[$i]['numero'];?>"><h3><?php echo $array[$i]['titulo'];?></h3></a>
                 <p><?php echo $array[$i]['resumen'];?></p>
-
-                <input type="text" style="visibility:hidden" name="num" value='<?php echo $array[$i]['numero'];?>'>
-                <input type="submit" name="" value="Ver" class="button">
+                <font font="Browallia New" size=2> Categoria: <?php echo $array[$i]['nombrecat'];?></font>
+                <font font="Browallia New" size=2> Publicado: <?php echo $array[$i]['fecha_crea'];?></font>
+              
               </div>
-
-            </form>
             <?php
                 }
               }

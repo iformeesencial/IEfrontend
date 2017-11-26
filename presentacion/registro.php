@@ -42,7 +42,7 @@ require_once("$menu");
             <input type="text" name="tel2" id="tel2" class="textbox" style="display:none">
 
             <br>
-            <button type="submit" name="boton" onclick=Mostrar_ocultar(); class="button">Agregar</button>
+            <button type="submit" name="boton" id="boton" onclick="Mostrar_ocultar();" class="button">Agregar telefono</button>
 
             <br>
             <br>

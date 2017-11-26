@@ -37,7 +37,7 @@ require_once("$menu");
             <textarea class="estilotextarea2" name="name" rows="6" cols="80" maxlength="300" placeholder="Comentario" readonly align="left"><?php echo $array[0]['descripcion'];?></textarea>
 
             <br>
-            <font font="Browallia New" size=2> By: <?php echo $array[0]['correoadmin'];?></font>
+            <font font="Browallia New" size=2> Autor: <?php echo $array[0]['correoadmin'];?></font>
 
             <br>
             <font font="Browallia New" size=2>Fecha de articulo: <?php echo $array[0]['fecha_crea'];?></font>
@@ -50,14 +50,31 @@ require_once("$menu");
             <br>
             <br>
 
+            <?php
+            if ((isset($_SESSION['loginusu']))){ //Se fija si esta seteada la variable
+
+              ?>
             <form action="<?php echo $handler;?>?estado=13" method="POST">
               <input type="submit" name="<?php echo $_SESSION['arti']; ?>" value="Megusta" class="button2">
             </form>
 
+            <?php
+          }else{
+          ?>
+            <h3></h3>
+            <font font="Browallia New" size=3>Debe iniciar sesion con su usuario del sitio para poder dar "me gusta".</font>
+            <br>
+            <a href="<?php echo $login2; ?>"><font font="Browallia New" size=3 color=blue>Ingresar al sitio ahora!.</font></a>
+            <br>
+            <br>
+            <?php
+            }
+            ?>
             <h3></h3>
             <h3>Comentarios:  </h3>
 
             <?php
+
              for ($i = 0; $i < $val; $i ++){
 
             ?>
@@ -67,6 +84,7 @@ require_once("$menu");
             <font font="Browallia New" size=2><?php echo $array2[$i]['comentario'];?></font>
             <br>
             <font font="Browallia New" size=2>Fecha realizado: <?php echo $array2[$i]['fecha_coment'];?></font>
+            <br>
             <br>
 
             <?php
